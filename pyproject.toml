@@ -4,14 +4,14 @@ version = "0.1.0"
 description = "difference generator"
 authors = ["polovykh <polovykh@mail.ru>"]
 readme = "README.md"
-packages = [{include = "gen_diff"}]
+packages = [{include = "gendiff"}]
 repository = "https://github.com/AlexanderPolovykh/python-project-50"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 
 [tool.poetry.scripts]
-gendiff = "gen_diff.scripts.gendiff:main"
+gendiff = "gendiff.scripts.gendiff:main"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.12.0"
