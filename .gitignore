@@ -3,6 +3,6 @@ __pycache__
 dist/
 *.pyc
 .venv/
-.coverage
-coverage.xml
+# .coverage
+# coverage.xml
 .pytest_cache/
