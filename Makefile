@@ -1,9 +1,6 @@
 install:
 	poetry install
 
-build:
-	poetry build
-
 publish:
 	poetry publish --dry-run
 
@@ -15,4 +12,20 @@ package-quick-inst:
 	python3 -m pip install .
 
 lint:
-	poetry run flake8 -v brain_games
+	poetry run flake8 -v gendiff
+
+test:
+	poetry run pytest -v
+
+test-coverage:
+	poetry run pytest --cov=gendiff --cov-report xml
+
+selfcheck:
+	poetry check
+
+check: selfcheck test lint
+
+build: check
+	poetry build
+
+.PHONY: install test lint selfcheck check build
