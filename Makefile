@@ -1,15 +1,12 @@
 install:
 	poetry install
 
-publish:
-	poetry publish --dry-run
+build:
+	poetry build
 
 package-install:
 	# python3 -m pip install --user dist/*.whl
 	python3 -m pip install --user --force-reinstall dist/*.whl
-
-package-quick-inst:
-	python3 -m pip install .
 
 lint:
 	poetry run flake8 -v gendiff
@@ -20,12 +17,17 @@ test:
 test-coverage:
 	poetry run pytest --cov=gendiff --cov-report xml
 
+publish:
+	poetry publish --dry-run
+
+package-quick-inst:
+	python3 -m pip install .
+
 selfcheck:
 	poetry check
 
 check: selfcheck test lint
 
-build: check
-	poetry build
+build-package: install build package-install
 
-.PHONY: install test lint selfcheck check build
+.PHONY: install build package lint test publish selfcheck check

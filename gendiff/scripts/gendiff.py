@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from gendiff.src.find_differences import cli_gendiff
+from gendiff.src.cli import cli_gendiff
 
 
 def main():
