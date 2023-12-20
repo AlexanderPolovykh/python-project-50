@@ -1,5 +1,5 @@
 import argparse
-from gendiff.src.find_diffs import gen_dicts_diffs
+from gendiff import gen_dicts_diffs
 
 
 def cli_gendiff():

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from gendiff.src.cli import cli_gendiff
+from gendiff import cli_gendiff
 
 
 def main():
