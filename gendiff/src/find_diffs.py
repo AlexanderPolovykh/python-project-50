@@ -11,7 +11,7 @@ def _get_dict(file_path: str) -> dict:
     try:
         with open(fp, "rb") as f:
             if ext.lower() in [".yaml", ".yml"]:
-                ret = yaml.load(f, Loader=yaml.Loader)[0]
+                ret = yaml.load(f, Loader=yaml.Loader)
             if ext.lower() == ".json":
                 ret = json.load(f)
     except Exception as e:
@@ -75,8 +75,10 @@ def _sub_key(string: str) -> str:
 
 def generate_diff(file_path1: str, file_path2: str, format_name: str) -> str:
     ret = ""
-    dict1 = _flat_vals(_get_dict(file_path1))
-    dict2 = _flat_vals(_get_dict(file_path2))
+    # dict1 = _flat_vals(_get_dict(file_path1))
+    # dict2 = _flat_vals(_get_dict(file_path2))
+    dict1 = _get_dict(file_path1)
+    dict2 = _get_dict(file_path2)
     diff_dict = _make_diffs(dict1, dict2)
     match format_name:
         case "stylish":
@@ -132,4 +134,4 @@ def _plain(_dict: dict, key_name: str) -> str:  # noqa C901
 
 
 # gen_dicts_diffs('tests/fixtures/file1.yaml', 'tests/fixtures/file2.yaml')
-generate_diff("tests/fixtures/struct_file1.yaml", "tests/fixtures/struct_file2.yaml", "json")
+generate_diff("tests/fixtures/struct_file1.yaml", "tests/fixtures/struct_file2.yaml", "stylish")
