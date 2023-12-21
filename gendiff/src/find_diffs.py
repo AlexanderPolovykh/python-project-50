@@ -130,8 +130,7 @@ def _plain(_dict: dict, key_name: str) -> str:  # noqa C901
             if isinstance(_dict[key], dict):
                 _list.extend(_plain(_dict[key], skey))
     return list(map(lambda row: row.replace('"', "'"), _list))
-    # return _list
 
 
 # gen_dicts_diffs('tests/fixtures/file1.yaml', 'tests/fixtures/file2.yaml')
-generate_diff("tests/fixtures/struct_file1.yaml", "tests/fixtures/struct_file2.yaml", "stylish")
+# generate_diff("tests/fixtures/struct_file1.yaml", "tests/fixtures/struct_file2.yaml", "stylish")
