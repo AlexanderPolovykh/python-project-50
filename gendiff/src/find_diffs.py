@@ -19,16 +19,16 @@ def _get_dict(file_path: str) -> dict:
     return ret
 
 
-def _flat_vals(_dict: dict) -> dict:
-    ret = {}
-    keys = _dict.keys()
-    for key in keys:
-        _dict[key] = _dict[key][0] if isinstance(_dict[key], list) else _dict[key]
-        if isinstance(_dict[key], dict):
-            ret[key] = _flat_vals(_dict[key])
-        else:
-            ret[key] = _dict[key]
-    return ret
+# def _flat_vals(_dict: dict) -> dict:
+#     ret = {}
+#     keys = _dict.keys()
+#     for key in keys:
+#         _dict[key] = _dict[key][0] if isinstance(_dict[key], list) else _dict[key]
+#         if isinstance(_dict[key], dict):
+#             ret[key] = _flat_vals(_dict[key])
+#         else:
+#             ret[key] = _dict[key]
+#     return ret
 
 
 def _make_diffs(dict1: dict, dict2: dict) -> dict:  # noqa C901
