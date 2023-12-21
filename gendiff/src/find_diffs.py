@@ -34,15 +34,11 @@ def _flat_vals(_dict: dict) -> dict:
 
 
 def make_diffs(dict1: dict, dict2: dict) -> dict:  # noqa C901
-    # dict1 = dict1[0] if isinstance(dict1, list) else dict1
-    # dict2 = dict2[0] if isinstance(dict2, list) else dict2
     keys1 = sorted(dict1.keys())
     keys2 = sorted(dict2.keys())
     dict_diffs = {}
     for key in keys1:
-        # dict1[key] = dict1[key][0] if isinstance(dict1[key], list) else dict1[key]
         if key in keys2:
-            # dict2[key] = dict2[key][0] if isinstance(dict2[key], list) else dict2[key]
             if not (isinstance(dict1[key], dict) or isinstance(dict2[key], dict)):
                 if dict1[key] == dict2[key]:
                     dict_diffs[f"{key}="] = dict1[key]
@@ -62,7 +58,6 @@ def make_diffs(dict1: dict, dict2: dict) -> dict:  # noqa C901
             dict_diffs[f"{key}+"] = dict1[key]
     for key in keys2:
         if key not in keys1:
-            # dict2[key] = dict2[key][0] if isinstance(dict2[key], list) else dict2[key]
             dict_diffs[f"{key}-"] = dict2[key]
     return dict_diffs
 
@@ -80,10 +75,13 @@ def sub_key(string: str) -> str:
     return f"  {string}"
 
 
-def gen_dicts_diffs(file_path1: str, file_path2: str) -> str:
+def gen_dicts_diffs(file_path1: str, file_path2: str) -> dict:
     dict1 = _flat_vals(get_dict(file_path1))
     dict2 = _flat_vals(get_dict(file_path2))
-    diffs = make_diffs(dict1, dict2)
+    return make_diffs(dict1, dict2)
+
+
+def stylish(diffs: dict) -> str:
     diff_prev = json.dumps(diffs, indent=4, separators=["", ": "], sort_keys=True)
     diff = diff_prev.replace('"', "")
     list_diff = diff.split("\n")
