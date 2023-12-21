@@ -73,7 +73,7 @@ def _sub_key(string: str) -> str:
     return f"  {string}"
 
 
-def generate_diff(file_path1: str, file_path2: str, format_name: str) -> str:
+def generate_diff(file_path1: str, file_path2: str, format_name='stylish') -> str:
     ret = ""
     # dict1 = _flat_vals(_get_dict(file_path1))
     # dict2 = _flat_vals(_get_dict(file_path2))
