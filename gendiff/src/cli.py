@@ -1,5 +1,5 @@
 import argparse
-from gendiff import gen_dicts_diffs, stylish
+from gendiff import generate_diff
 
 
 def cli_gendiff():
@@ -20,11 +20,5 @@ def cli_gendiff():
     arg_first_file = args_dict.get("first_file")
     arg_second_file = args_dict.get("second_file")
     arg_format = args_dict.get("FORMAT")
-    diff = gen_dicts_diffs(arg_first_file, arg_second_file)
-    match arg_format:
-        case "stylish":
-            diff_str = stylish(diff)
-        case _:
-            diff_str = ""
-    print(arg_format)
+    diff_str = generate_diff(arg_first_file, arg_second_file, arg_format)
     print(diff_str)
