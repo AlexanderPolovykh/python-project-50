@@ -13,7 +13,7 @@ def cli_gendiff():
         "--format",
         dest="FORMAT",
         default="stylish",
-        help="set format of output (default: stylish)",
+        help="set format of output [stylish, plain, json] (default: stylish)",
     )
     args = parser.parse_args()
     args_dict = vars(args)

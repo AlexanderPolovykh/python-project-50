@@ -89,6 +89,8 @@ def generate_diff(file_path1: str, file_path2: str, format_name: str) -> str:
             ret = "\n".join(new_list)
         case "plain":
             ret = "\n".join(_plain(diff_dict, ""))
+        case "json":
+            ret = json.dumps(diff_dict, indent=4, separators=["", ": "], sort_keys=True)
         case _:
             pass
     return ret
@@ -130,4 +132,4 @@ def _plain(_dict: dict, key_name: str) -> str:  # noqa C901
 
 
 # gen_dicts_diffs('tests/fixtures/file1.yaml', 'tests/fixtures/file2.yaml')
-# generate_diff("tests/fixtures/struct_file1.yaml", "tests/fixtures/struct_file2.yaml", "plain")
+generate_diff("tests/fixtures/struct_file1.yaml", "tests/fixtures/struct_file2.yaml", "json")
